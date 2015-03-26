@@ -1,0 +1,31 @@
+{
+  "name": "bicycle",
+  "version": "0.1.0",
+  "description": "A frontend MVC thing",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bjnortier/bicycle.git"
+  },
+  "author": "Ben Nortier <ben@bjnortier.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bjnortier/bicycle/issues"
+  },
+  "homepage": "https://github.com/bjnortier/bicycle",
+  "devDependencies": {
+    "chai": "^2.1.2",
+    "gulp": "^3.8.11",
+    "gulp-jscs": "^1.4.0",
+    "gulp-jshint": "^1.9.4",
+    "gulp-mocha": "^2.0.0",
+    "jshint-stylish": "^1.0.1",
+    "mocha": "^2.2.1"
+  },
+  "dependencies": {
+    "event-emitter": "^0.3.3"
+  }
+}
