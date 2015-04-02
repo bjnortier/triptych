@@ -2,7 +2,7 @@
     "fileExtensions": [ ".js", "jscs" ],
 
     "requireParenthesesAroundIIFE": true,
-    "maximumLineLength": 90,
+    "maximumLineLength": 100,
     "validateLineBreaks": "LF",
     "validateIndentation": 2,
     "disallowMultipleVarDecl": true,
