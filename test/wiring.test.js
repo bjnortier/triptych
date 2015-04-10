@@ -19,8 +19,8 @@ SimpleModel.prototype.set = function(key, value) {
 // ----- Simple V -----
 
 function SimpleView(model) {
-  View.call(this, model);
   this.changes = [];
+  View.call(this, model);
 }
 
 SimpleView.prototype = Object.create(SimpleView.prototype);

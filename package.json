@@ -1,5 +1,5 @@
 {
-  "name": "bicycle",
+  "name": "flow",
   "version": "0.1.0",
   "description": "A frontend MVC thing",
   "main": "lib/index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:bjnortier/bicycle.git"
+    "url": "git@github.com:bjnortier/vector.git"
   },
   "author": "Ben Nortier <ben@bjnortier.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bjnortier/bicycle/issues"
+    "url": "https://github.com/bjnortier/vector/issues"
   },
-  "homepage": "https://github.com/bjnortier/bicycle",
+  "homepage": "https://github.com/bjnortier/vector",
   "devDependencies": {
     "chai": "^2.1.2",
     "gulp": "^3.8.11",
