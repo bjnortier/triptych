@@ -29,6 +29,9 @@ SimpleView.prototype.onChange = function(key, value) {
   this.changes.push([key, value]);
 };
 
+SimpleView.prototype.render = function() {
+};
+
 // ----- Tests -----
 
 describe('Model', function() {
