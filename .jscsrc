@@ -13,7 +13,6 @@
     "requireSpaceAfterLineComment": true,
     "requireSpaceBeforeBinaryOperators": true,
     "requireSpaceBeforeBlockStatements": true,
-    "requireSpaceBeforeKeywords": true,
     "requireSpaceBetweenArguments": true,
     "excludeFiles": []
 }

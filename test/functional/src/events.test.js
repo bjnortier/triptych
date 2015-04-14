@@ -6,7 +6,9 @@ var DOMScene = flow.scenes.DOMScene;
 var AxesView = flow.views.AxesView;
 
 var CubeView = require('./CubeView');
-var EventDebugView = require('./EventDebugView');
+var EventCaptureModel = require('./EventCaptureModel');
+var EventCaptureController = require('./EventCaptureController');
+var EventCaptureView = require('./EventCaptureView');
 
 var threeJSSceneOptions = {
   cameraPosition: {
@@ -16,8 +18,10 @@ var threeJSSceneOptions = {
 var threeJSScene = new ThreeJSScene($('#viewport'), threeJSSceneOptions);
 var domScene = new DOMScene($('#dom'));
 
-var model = new EmptyModel();
-new AxesView(model, threeJSScene);
-new CubeView(model, threeJSScene);
+var emptyModel = new EmptyModel();
+new AxesView(emptyModel, threeJSScene);
+new CubeView(emptyModel, threeJSScene);
 
-new EventDebugView(model, domScene);
+var eventCaptureModel = new EventCaptureModel();
+var eventCaptureController = new EventCaptureController(eventCaptureModel);
+eventCaptureController.addView(eventCaptureModel, domScene, EventCaptureView);
