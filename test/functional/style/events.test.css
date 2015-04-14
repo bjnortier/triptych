@@ -16,10 +16,15 @@
 .event div {
   display: inline-block;
   padding: 2px 5px;
+  font-size: 12px;
 }
 
-.event .type, .event .x, .event .y {
-  width: 40px;
+.event .type {
+  width: 60px;
+}
+
+.event .x, .event .y {
+  width: 30px;
 }
 
 .event .x {

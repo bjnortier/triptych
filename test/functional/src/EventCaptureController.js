@@ -7,6 +7,9 @@ function EventCaptureController(model, scene) {
   scene.eventGenerator.on('click', function(x, y, event) {
     _this.model.addEvent('click', x, y, event);
   });
+  scene.eventGenerator.on('mousemove', function(x, y, event) {
+    _this.model.addEvent('mousemove', x, y, event);
+  });
 }
 
 EventCaptureController.prototype = Object.create(Controller.prototype);
