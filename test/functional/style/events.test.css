@@ -12,3 +12,22 @@
   left: 20%;
   box-sizing: border-box;
 }
+
+.event div {
+  display: inline-block;
+  padding: 2px 5px;
+}
+
+.event .type, .event .x, .event .y {
+  width: 40px;
+}
+
+.event .x {
+  color: blue;
+}
+
+.event .y {
+  color: green;
+}
+
+

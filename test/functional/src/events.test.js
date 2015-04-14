@@ -5,6 +5,7 @@ var ThreeJSScene = flow.scenes.ThreeJSScene;
 var DOMScene = flow.scenes.DOMScene;
 var AxesView = flow.views.AxesView;
 
+
 var CubeView = require('./CubeView');
 var EventCaptureModel = require('./EventCaptureModel');
 var EventCaptureController = require('./EventCaptureController');
@@ -23,5 +24,6 @@ new AxesView(emptyModel, threeJSScene);
 new CubeView(emptyModel, threeJSScene);
 
 var eventCaptureModel = new EventCaptureModel();
-var eventCaptureController = new EventCaptureController(eventCaptureModel);
+var eventCaptureController = new EventCaptureController(
+  eventCaptureModel, threeJSScene);
 eventCaptureController.addView(eventCaptureModel, domScene, EventCaptureView);

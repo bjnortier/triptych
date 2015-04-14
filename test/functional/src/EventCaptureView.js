@@ -10,13 +10,18 @@ EventCaptureView.prototype = Object.create(DOMView.prototype);
 
 EventCaptureView.prototype.render = function() {
   DOMView.prototype.render.call(this);
-  var template = '{{#events}}<div class="event">{{.}}</div>{{/events}}';
-  var reversed = this.model.events.slice(0);
-  reversed.reverse();
+  var template = 
+    '{{#events}}' +
+      '<div class="event">' +
+        '<div class="type">{{type}}</div>' +
+        '<div class="x">{{x}}</div>' +
+        '<div class="y">{{y}}</div>' +
+      '</div>' + 
+    '{{/events}}';
+  var reversedEvents = this.model.events.slice(0);
+  reversedEvents.reverse();
   this.$el.html(mustache.render(template, {
-    events: reversed.map(function(e) {
-      return JSON.stringify(e);
-    })
+    events: reversedEvents
   }));
 };
 
