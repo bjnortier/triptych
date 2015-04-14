@@ -1,6 +1,14 @@
+#dom {
+  position: absolute; 
+  height: 100%;
+  width: 20%;
+  box-sizing: border-box; 
+}
+
 #viewport {
-    position: absolute; 
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
+  position: absolute; 
+  height: 100%;
+  width: 80%;
+  left: 20%;
+  box-sizing: border-box;
 }
