@@ -21,8 +21,8 @@ var domScene = new DOMScene($('#dom'));
 
 var emptyModel = new EmptyModel();
 new AxesView(emptyModel, threeJSScene);
-new CubeView(emptyModel, threeJSScene);
-new CubeView(emptyModel, threeJSScene, {
+var c1 = new CubeView(emptyModel, threeJSScene);
+var c2 = new CubeView(emptyModel, threeJSScene, {
   color: 0xff9966, 
   position: {x: 0.6, y: 0, z: 0},
   size: 0.2
@@ -30,5 +30,5 @@ new CubeView(emptyModel, threeJSScene, {
 
 var eventCaptureModel = new EventCaptureModel();
 var eventCaptureController = new EventCaptureController(
-  eventCaptureModel, threeJSScene);
+  eventCaptureModel, threeJSScene, c1, c2);
 eventCaptureController.addView(eventCaptureModel, domScene, EventCaptureView);

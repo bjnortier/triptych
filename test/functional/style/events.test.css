@@ -1,15 +1,15 @@
 #dom {
   position: absolute; 
   height: 100%;
-  width: 20%;
+  width: 25%;
   box-sizing: border-box; 
 }
 
 #viewport {
   position: absolute; 
   height: 100%;
-  width: 80%;
-  left: 20%;
+  width: 75%;
+  left: 25%;
   box-sizing: border-box;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .event .x, .event .y {
-  width: 30px;
+  width: 35px;
 }
 
 .event .x {

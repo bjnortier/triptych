@@ -11,7 +11,6 @@
     "disallowMixedSpacesAndTabs": true,
     "safeContextKeyword": "_this",
     "requireSpaceAfterLineComment": true,
-    "requireSpaceBeforeBinaryOperators": true,
     "requireSpaceBeforeBlockStatements": true,
     "requireSpaceBetweenArguments": true,
     "excludeFiles": []
