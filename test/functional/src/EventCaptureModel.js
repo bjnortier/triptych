@@ -8,8 +8,8 @@ function EventCaptureModel() {
 
 EventCaptureModel.prototype = Object.create(Model.prototype);
 
-EventCaptureModel.prototype.addEvent = function(type, x, y, event) {
-  this.events.push({type: type, x: x, y: y, event: event});
+EventCaptureModel.prototype.addEvent = function(type, event, data) {
+  this.events.push({type: type, event: event, data: data});
   if (this.events.length > 30) {
     this.events = this.events.slice(1);
   }

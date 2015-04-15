@@ -14,12 +14,23 @@ EventCaptureView.prototype.render = function() {
     '{{#events}}' +
       '<div class="event">' +
         '<div class="type">{{type}}</div>' +
-        '<div class="x">{{x}}</div>' +
-        '<div class="y">{{y}}</div>' +
+        '{{#position}}' + 
+          '{{#x}}<div class="x">{{.}}</div>{{/x}}' +
+          '{{#y}}<div class="y">{{.}}</div>{{/y}}' +
+          '{{#z}}<div class="z">{{.}}</div>{{/z}}' +
+        '{{/position}}' +
       '</div>' + 
     '{{/events}}';
   var reversedEvents = this.model.events.slice(0);
   reversedEvents.reverse();
+  reversedEvents = reversedEvents.map(function(eventStruct) {
+    return {
+      type: eventStruct.type,
+      x: eventStruct.data.x,
+      y: eventStruct.data.y,
+      position: eventStruct.data.position,
+    };
+  });
   this.$el.html(mustache.render(template, {
     events: reversedEvents
   }));

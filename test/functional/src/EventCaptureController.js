@@ -4,11 +4,14 @@ var Controller = flow.Controller;
 function EventCaptureController(model, scene) {
   Controller.call(this, model);
   var _this = this;
-  scene.eventGenerator.on('click', function(x, y, event) {
-    _this.model.addEvent('click', x, y, event);
-  });
-  scene.eventGenerator.on('mousemove', function(x, y, event) {
-    _this.model.addEvent('mousemove', x, y, event);
+  // scene.eventGenerator.on('click', function(event, position) {
+  //   _this.model.addEvent('raw click', event, position);
+  // });
+  // scene.eventGenerator.on('mousemove', function(event, position) {
+  //   _this.model.addEvent('raw mousemove', event, position);
+  // });
+  scene.viewEventGenerator.on('click', function(event, closest) {
+    _this.model.addEvent('view click', event, closest);
   });
 }
 
