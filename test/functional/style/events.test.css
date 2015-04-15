@@ -11,6 +11,7 @@
   width: 75%;
   left: 25%;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .event div {
