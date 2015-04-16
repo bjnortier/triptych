@@ -5,7 +5,7 @@ var ThreeJSView = flow.views.ThreeJSView;
 function CubeView(model, scene, options) {
   options = options || {};
   options.color = (options.color === undefined) ? 
-    0x6699ff : options.color;
+    0x6666ff : options.color;
   options.position = (options.position === undefined) ? 
     {x: 0, y: 0, z: 0} : options.position;
   options.size = (options.size === undefined) ?
