@@ -1,0 +1,36 @@
+{
+  "name": "flow",
+  "version": "0.2.0",
+  "description": "A frontend MVC thing",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bjnortier/vector.git"
+  },
+  "author": "Ben Nortier <ben@bjnortier.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bjnortier/vector/issues"
+  },
+  "homepage": "https://github.com/bjnortier/vector",
+  "devDependencies": {
+    "chai": "^2.1.2",
+    "gulp": "^3.8.11",
+    "gulp-jscs": "^1.4.0",
+    "gulp-jshint": "^1.9.4",
+    "gulp-mocha": "^2.0.0",
+    "jshint-stylish": "^1.0.1",
+    "mocha": "^2.2.1",
+    "webpack": "^1.8.4"
+  },
+  "dependencies": {
+    "event-emitter": "^0.3.3",
+    "jquery": "^2.1.1",
+    "mustache": "^2.0.0",
+    "svg.js": "^1.0.0",
+    "three": "^0.69.0"
+  }
+}

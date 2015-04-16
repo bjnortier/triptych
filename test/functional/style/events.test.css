@@ -1,0 +1,43 @@
+#dom {
+  position: absolute; 
+  height: 100%;
+  width: 25%;
+  box-sizing: border-box; 
+}
+
+#viewport {
+  position: absolute; 
+  height: 100%;
+  width: 75%;
+  left: 25%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.event div {
+  display: inline-block;
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
+.event .type {
+  width: 60px;
+}
+
+.event .x, .event .y {
+  width: 35px;
+}
+
+.event .x {
+  color: blue;
+}
+
+.event .y {
+  color: green;
+}
+
+.event .z {
+  color: red;
+}
+
+
