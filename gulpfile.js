@@ -3,7 +3,7 @@ var path = require('path');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var mocha = require('gulp-mocha');
-var webpack = require('webpack');
+var webpack = require('gulp-webpack-build');
 
 var srcFiles = path.join('lib', '**', '*.js');
 var unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
@@ -32,25 +32,25 @@ gulp.task('unit', function() {
     .pipe(mocha({}));
 });
 
-gulp.task('webpack', function(callback) {
-  webpack({
-    entry: {
-      'events.test': './test/functional/src/events.test.js',
-    },
-    output: {
-      path: 'test/functional/lib',
-      filename: '[name].bundle.js',
-      publicPath: 'lib/',
-    },
-    devtool: '#inline-source-map',
-  }, function(err, stats) {
-    if (err || (stats.hasErrors)) {
-      var errorMsg = err || stats.compilation.errors.join('\n');
-      callback(errorMsg);
-    } else {
-      callback();
-    }
-  });
+var webpackOptions = {
+  debug: true,
+};
+var webpackConfig = {};
+var CONFIG_FILENAME = webpack.config.CONFIG_FILENAME;
+
+gulp.task('webpack', [], function() {
+  return gulp.src(path.join(CONFIG_FILENAME))
+    .pipe(webpack.configure(webpackConfig))
+    .pipe(webpack.overrides(webpackOptions))
+    .pipe(webpack.compile())
+    .pipe(webpack.format({
+      version: false,
+      timings: true
+    }))
+    .pipe(webpack.failAfter({
+      errors: true,
+      warnings: true
+    }));
 });
 
 // ----- Aggregate Tasks -----
