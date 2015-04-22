@@ -23,7 +23,7 @@ var emptyModel = new EmptyModel();
 new AxesView(emptyModel, threeJSScene);
 var c1 = new CubeView(emptyModel, threeJSScene);
 var c2 = new CubeView(emptyModel, threeJSScene, {
-  color: 0xff9966, 
+  color: 0xff6666, 
   position: {x: 0.6, y: 0, z: 0},
   size: 0.2
 });
