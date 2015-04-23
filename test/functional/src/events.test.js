@@ -31,4 +31,4 @@ var c2 = new CubeView(emptyModel, threeJSScene, {
 var eventCaptureModel = new EventCaptureModel();
 var eventCaptureController = new EventCaptureController(
   eventCaptureModel, threeJSScene, c1, c2);
-eventCaptureController.addView(eventCaptureModel, domScene, EventCaptureView);
+eventCaptureController.addView(domScene, EventCaptureView);

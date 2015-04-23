@@ -1,6 +1,6 @@
 {
   "name": "flow",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "A frontend MVC thing",
   "main": "lib/index.js",
   "scripts": {
@@ -21,7 +21,7 @@
     "jquery": "^2.1.1",
     "mustache": "^2.0.0",
     "svg.js": "^1.0.0",
-    "three": "^0.69.0",
+    "three": "^0.71.0",
     "webpack": "^1.8.4"
   },
   "devDependencies": {
