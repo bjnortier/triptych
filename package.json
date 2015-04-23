@@ -1,6 +1,6 @@
 {
   "name": "flow",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "A frontend MVC thing",
   "main": "lib/index.js",
   "scripts": {
