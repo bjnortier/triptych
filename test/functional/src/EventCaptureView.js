@@ -36,7 +36,7 @@ EventCaptureView.prototype.render = function() {
   }));
 };
 
-EventCaptureView.prototype.onChange = function() {
+EventCaptureView.prototype.update = function() {
   this.render();
 };
 
