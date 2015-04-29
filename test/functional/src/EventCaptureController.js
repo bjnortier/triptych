@@ -1,10 +1,18 @@
 var flow = require('../../../');
+var $ = flow.$;
+var DOMScene = flow.scenes.DOMScene;
 var Controller = flow.Controller;
 
-function EventCaptureController(model, scene, cube1, cube2) {
-  Controller.call(this, model);
-  var _this = this;
+var EventCaptureModel = require('./EventCaptureModel');
+var EventCaptureView = require('./EventCaptureView');
 
+function EventCaptureController(cube1, cube2) {
+  Controller.call(this, new EventCaptureModel());
+
+  var domScene = new DOMScene($('#dom'));
+  this.addView(domScene, EventCaptureView);
+
+  var _this = this;
   function addListener(view, label, type) {
     view.on(type, function(event, position) {
       _this.model.addEvent(label + ':' + type, event, {position: position});
