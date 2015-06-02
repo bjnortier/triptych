@@ -1,8 +1,8 @@
 var chai = require('chai');
 var assert = chai.assert;
 
-var Model = require('..').Model;
-var View = require('..').View;
+var Model = require('../..').Model;
+var View = require('../..').View;
 
 // ----- Simple M -----
 
@@ -19,17 +19,18 @@ SimpleModel.prototype.set = function(key, value) {
 // ----- Simple V -----
 
 function SimpleView(model) {
-  this.changes = [];
+  this.functions = [];
   View.call(this, model);
 }
 
 SimpleView.prototype = Object.create(SimpleView.prototype);
 
-SimpleView.prototype.onChange = function(key, value) {
-  this.changes.push([key, value]);
+SimpleView.prototype.render = function() {
+  this.functions.push('render');
 };
 
-SimpleView.prototype.render = function() {
+SimpleView.prototype.update = function() {
+  this.functions.push('update');
 };
 
 // ----- Tests -----
@@ -39,11 +40,11 @@ describe('Model', function() {
   it('can emit changes', function() {
     var m = new SimpleModel();
     
-    var changes = [];
-    m.on('change', function(key, value) { changes.push([key, value]); });
+    var functions = [];
+    m.on('change', function(key, value) { functions.push([key, value]); });
     m.set('a', 1);
 
-    assert.deepEqual(changes, [['a', 1]]);
+    assert.deepEqual(functions, [['a', 1]]);
   });
 
 });
@@ -56,8 +57,8 @@ describe('MVC', function () {
     var v2 = new SimpleView(m);
 
     m.set('a', 1);
-    assert.deepEqual(v1.changes, [['a', 1]]);
-    assert.deepEqual(v2.changes, [['a', 1]]);
+    assert.deepEqual(v1.functions, ['render', 'update']);
+    assert.deepEqual(v2.functions, ['render', 'update']);
   });
 
 });
