@@ -5,7 +5,6 @@ var ThreeJSScene = flow.scenes.ThreeJSScene;
 
 var AxesView = flow.views.AxesView;
 
-
 var CubeView = require('./CubeView');
 
 var EventCaptureController = require('./EventCaptureController');
