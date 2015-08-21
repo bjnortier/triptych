@@ -1,6 +1,6 @@
 {
+    "esnext": true,
     "fileExtensions": [ ".js", "jscs" ],
-
     "requireParenthesesAroundIIFE": true,
     "maximumLineLength": 100,
     "validateLineBreaks": "LF",
