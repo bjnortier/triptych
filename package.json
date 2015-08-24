@@ -20,7 +20,9 @@
   "dependencies": {
     "event-emitter": "^0.3.3",
     "jquery": "^2.1.1",
+    "lodash.isarray": "^3.0.4",
     "lodash.isfunction": "^3.0.5",
+    "lodash.isobject": "^3.0.2",
     "lodash.keys": "^3.1.2",
     "mustache": "^2.0.0",
     "svg.js": "^1.0.0",
