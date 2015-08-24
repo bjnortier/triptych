@@ -21,6 +21,7 @@
     "event-emitter": "^0.3.3",
     "jquery": "^2.1.1",
     "lodash.isfunction": "^3.0.5",
+    "lodash.keys": "^3.1.2",
     "mustache": "^2.0.0",
     "svg.js": "^1.0.0",
     "three": "^0.71.0",

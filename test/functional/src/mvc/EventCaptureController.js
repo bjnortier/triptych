@@ -1,4 +1,4 @@
-var flow = require('../../../');
+var flow = require('../../../..');
 var $ = flow.$;
 var DOMScene = flow.scenes.DOMScene;
 var Controller = flow.Controller;

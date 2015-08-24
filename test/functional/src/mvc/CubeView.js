@@ -1,4 +1,4 @@
-var flow = require('../../..');
+var flow = require('../../../..');
 var THREE = flow.THREE;
 var ThreeJSView = flow.views.ThreeJSView;
 

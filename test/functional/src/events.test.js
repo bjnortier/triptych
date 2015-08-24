@@ -4,8 +4,8 @@ var EmptyModel = flow.Model;
 var ThreeJSScene = flow.scenes.ThreeJSScene;
 
 var AxesView = flow.views.AxesView;
-var CubeView = require('./CubeView');
-var EventCaptureController = require('./EventCaptureController');
+var CubeView = require('./mvc/CubeView');
+var EventCaptureController = require('./mvc/EventCaptureController');
 
 var threeJSSceneOptions = {
   cameraPosition: {

@@ -1,4 +1,4 @@
-var flow = require('../../../');
+var flow = require('../../../..');
 var mustache = flow.mustache;
 var DOMView = flow.views.DOMView;
 
