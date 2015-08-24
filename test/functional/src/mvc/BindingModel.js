@@ -9,7 +9,13 @@ class BindingModel extends Model {
 
     var fields = {
       foo: 'some string',
-      bar: 3.14159,
+      bar: 'b',
+    };
+
+    var fieldSpecs = {
+      bar: {
+        options: ['a', 'b', 'c'],
+      }
     };
 
     keys(fields).forEach(key => {
@@ -20,6 +26,10 @@ class BindingModel extends Model {
 
       this.__defineGetter__(key, () => {
         return fields[key];
+      });
+
+      this.__defineGetter__(key + 'Spec', () => {
+        return fieldSpecs[key];
       });
     });
   }
