@@ -3,7 +3,8 @@ var path = require('path');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var mocha = require('gulp-mocha');
-var webpack = require('gulp-webpack-build');
+var babel = require('gulp-babel');
+var babel_register = require('babel/register');
 
 var srcFiles = path.join('lib', '**', '*.js');
 var unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
@@ -26,41 +27,33 @@ gulp.task('jscs', function() {
   return gulp.src([srcFiles, unitTestFiles])
     .pipe(jscs());
 });
-
-gulp.task('unit', function() {
-  return gulp.src(unitTestFiles)
-    .pipe(mocha({}));
+ 
+gulp.task('babel', function () {
+  return gulp.src(srcFiles)
+    // .pipe(sourcemaps.init())
+    .pipe(babel())
+    // .pipe(concat('flow.js'))
+    // .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest('build'));
 });
 
-var webpackOptions = {
-  debug: true,
-};
-var webpackConfig = {};
-var CONFIG_FILENAME = webpack.config.CONFIG_FILENAME;
-
-gulp.task('webpack', [], function() {
-  return gulp.src(path.join(CONFIG_FILENAME))
-    .pipe(webpack.configure(webpackConfig))
-    .pipe(webpack.overrides(webpackOptions))
-    .pipe(webpack.compile())
-    .pipe(webpack.format({
-      version: false,
-      timings: true
-    }))
-    .pipe(webpack.failAfter({
-      errors: true,
-      warnings: true
+gulp.task('unit', ['babel'], function() {
+  return gulp.src(unitTestFiles)
+    .pipe(mocha({
+      compilers: {
+        js: babel_register
+      }
     }));
 });
 
 // ----- Aggregate Tasks -----
 
-gulp.task('test', ['jshint', 'jscs', 'unit', 'webpack']);
+gulp.task('test', ['jshint', 'jscs', 'babel', 'unit']);
 
 gulp.task('default', ['test']);
 
 gulp.task('watch', function() {
-  gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit', 'webpack']);
+  gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
   gulp.watch(unitTestFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
-  gulp.watch(functionalTestFiles, ['clearconsole', 'jshint', 'jscs', 'webpack']);
+  gulp.watch(functionalTestFiles, ['clearconsole', 'jshint', 'jscs']);
 });

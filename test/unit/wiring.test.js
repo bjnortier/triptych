@@ -6,32 +6,26 @@ var View = require('../..').View;
 
 // ----- Simple M -----
 
-function SimpleModel() {
-  Model.call(this);
+class SimpleModel extends Model {
+  set(key, value) {
+    this.emitChange(key, value);
+  }
 }
-
-SimpleModel.prototype = Object.create(Model.prototype);
-
-SimpleModel.prototype.set = function(key, value) {
-  this.emitChange(key, value);
-};
 
 // ----- Simple V -----
 
-function SimpleView(model) {
-  this.functions = [];
-  View.call(this, model);
+class SimpleView extends View {
+  constructor(model) {
+    super(model);
+    this.functions = [];
+  }
+  render() {
+    this.functions.push('render');
+  }
+  update() {
+    this.functions.push('update');
+  }
 }
-
-SimpleView.prototype = Object.create(SimpleView.prototype);
-
-SimpleView.prototype.render = function() {
-  this.functions.push('render');
-};
-
-SimpleView.prototype.update = function() {
-  this.functions.push('update');
-};
 
 // ----- Tests -----
 
@@ -51,14 +45,18 @@ describe('Model', function() {
 
 describe('MVC', function () {
 
-  it('wires a Model and View', function() {
+  it('wires a Model and View', function(done) {
     var m = new SimpleModel();
     var v1 = new SimpleView(m);
     var v2 = new SimpleView(m);
 
-    m.set('a', 1);
-    assert.deepEqual(v1.functions, ['render', 'update']);
-    assert.deepEqual(v2.functions, ['render', 'update']);
+    // First render is done on next tick
+    setTimeout(function() { 
+      m.set('a', 1);
+      assert.deepEqual(v1.functions, ['render', 'update']);
+      assert.deepEqual(v2.functions, ['render', 'update']);
+      done();
+    }, 0);
   });
 
 });
