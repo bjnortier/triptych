@@ -25,6 +25,7 @@
     "mustache": "^2.0.0",
     "svg.js": "^1.0.0",
     "three": "^0.71.0",
+    "uuid": "^2.0.1",
     "webpack": "^1.8.4"
   },
   "devDependencies": {

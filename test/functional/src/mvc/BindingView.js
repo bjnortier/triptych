@@ -1,5 +1,7 @@
+var uuid = require('uuid');
 var flow = require('../../../..');
 var $ = flow.$;
+var mustache = flow.mustache;
 var DOMView = flow.views.DOMView;
 
 class TextInput {
@@ -79,9 +81,34 @@ class BindingView extends DOMView {
       new Text(this.model, 'bar'),
     ];
 
-    dataBindings.forEach(binding => {
-      this.$el.append(binding.$el);
+    var template = 
+      '{{#bindings}}' + 
+        '<div>{{{placeholder}}}</div>' +
+      '{{/bindings}}';
+
+    var placeHolders = dataBindings.map((binding) => {
+      var id = '__' + uuid.v4() + '__';
+      return {
+        id: id, 
+        binding: binding, 
+        placeholder: '<div class="placeholder" id="' + id + '"></div>'
+      };
     });
+    
+    var view = {
+      bindings: placeHolders,
+    };
+
+    this.$el.html(mustache.render(template, view));
+
+    placeHolders.forEach(placeholder => {
+      var id = placeholder.id;
+      this.$el.find('.placeholder#' + id).replaceWith(placeholder.binding.$el);
+    }, this);
+
+    // dataBindings.forEach(binding => {
+    //   this.$el.append(binding.$el);
+    // });
   }
 
   update() {
