@@ -1,4 +1,4 @@
-var flow = require('../../../');
+var flow = require('../../../..');
 var mustache = flow.mustache;
 var DOMView = flow.views.DOMView;
 
@@ -26,9 +26,7 @@ class EventCaptureView extends DOMView {
     reversedEvents = reversedEvents.map(function(eventStruct) {
       return {
         type: eventStruct.type,
-        x: eventStruct.data.x,
-        y: eventStruct.data.y,
-        position: eventStruct.data.position,
+        position: eventStruct.data,
       };
     });
     this.$el.html(mustache.render(template, {

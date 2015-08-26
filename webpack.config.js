@@ -1,6 +1,7 @@
 module.exports = {
   entry: {
-    'events.test': "./test/functional/src/events.test.js"
+    'events.test': "./test/functional/src/events.test.js",
+    'databinding.test': "./test/functional/src/databinding.test.js",
   },
   module: {
     loaders: [

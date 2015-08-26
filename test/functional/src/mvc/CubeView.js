@@ -1,4 +1,4 @@
-var flow = require('../../..');
+var flow = require('../../../..');
 var THREE = flow.THREE;
 var ThreeJSView = flow.views.ThreeJSView;
 
@@ -8,6 +8,7 @@ class CubeView extends ThreeJSView {
     super(model, scene);
 
     options = options || {};
+    this.label = options.label;
     options.color = (options.color === undefined) ? 
       0x6666ff : options.color;
     options.position = (options.position === undefined) ? 
