@@ -1,3 +1,5 @@
 node_modules/
+build/
 test/functional/lib/*.bundle.js
+test/functional/lib/*.bundle.js.map
 .DS_Store
