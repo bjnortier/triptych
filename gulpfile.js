@@ -4,7 +4,7 @@ var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var mocha = require('gulp-mocha');
 var babel = require('gulp-babel');
-var babel_register = require('babel/register');
+// var babel_register = require('babel/register');
 
 var srcFiles = path.join('lib', '**', '*.js');
 var unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
@@ -41,7 +41,7 @@ gulp.task('unit', ['babel'], function() {
   return gulp.src(unitTestFiles)
     .pipe(mocha({
       compilers: {
-        js: babel_register
+        // js: babel_register
       }
     }));
 });
