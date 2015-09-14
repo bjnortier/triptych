@@ -1,6 +1,6 @@
 {
   "name": "flow",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "A frontend MVC thing",
   "main": "build/index.js",
   "scripts": {
@@ -19,7 +19,9 @@
   "homepage": "https://github.com/bjnortier/vector",
   "dependencies": {
     "event-emitter": "^0.3.3",
+    "joi": "^6.6.1",
     "jquery": "^2.1.1",
+    "lodash.clonedeep": "^3.0.2",
     "lodash.isarray": "^3.0.4",
     "lodash.isfunction": "^3.0.5",
     "lodash.isobject": "^3.0.2",
