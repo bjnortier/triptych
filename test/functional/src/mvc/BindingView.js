@@ -3,6 +3,7 @@ var DOMView = flow.views.DOMView;
 var TextInput = flow.bindings.dom.TextInput;
 var Text = flow.bindings.dom.Text;
 var Select = flow.bindings.dom.Select;
+var Checkbox = flow.bindings.dom.Checkbox;
 
 class BindingView extends DOMView {
 
@@ -21,6 +22,9 @@ class BindingView extends DOMView {
         new Select(this.model, 'bar'),
         new Select(this.model, 'bar'),
         new Text(this.model, 'bar'),
+        new Checkbox(this.model, 'baz'),
+        new Checkbox(this.model, 'baz'),
+        new Text(this.model, 'baz'),
       ]
     };
 
