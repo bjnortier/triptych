@@ -2,7 +2,6 @@ module.exports = {
   entry: {
     'events.test': "./test/functional/src/events.test.js",
     'databinding.test': "./test/functional/src/databinding.test.js",
-    'validation.test': "./test/functional/src/validation.test.js",
   },
   module: {
     loaders: [
@@ -17,5 +16,9 @@ module.exports = {
     path: 'test/functional/lib/',
     filename: "[name].bundle.js"
   },
-  devtool: "#source-map"
+  devtool: "#source-map",
+  node: {
+    net: 'empty',
+    dns: 'empty',
+  }
 };

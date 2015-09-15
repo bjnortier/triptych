@@ -10,6 +10,7 @@ class BindingModel extends Model {
     var fields = {
       foo: 'some string',
       bar: 'b',
+      baz: true,
     };
 
     var fieldSpecs = {
