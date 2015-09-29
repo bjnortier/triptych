@@ -1,6 +1,6 @@
 {
   "name": "flow",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A frontend MVC thing",
   "main": "build/index.js",
   "scripts": {
@@ -28,7 +28,7 @@
     "lodash.keys": "^3.1.2",
     "mustache": "^2.0.0",
     "svg.js": "^1.0.0",
-    "three": "^0.71.0",
+    "three": "^0.72.0",
     "uuid": "^2.0.1",
     "webpack": "^1.8.4"
   },
