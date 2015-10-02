@@ -28,7 +28,7 @@ gulp.task('jscs', function() {
     .pipe(jscs());
 });
  
-gulp.task('babel', function () {
+gulp.task('babel', ['jshint', 'jscs'], function () {
   return gulp.src(srcFiles)
     // .pipe(sourcemaps.init())
     .pipe(babel())
