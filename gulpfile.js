@@ -51,7 +51,6 @@ gulp.task('unit', ['babel'], function() {
 gulp.task('test', ['jshint', 'jscs', 'babel', 'unit']);
 
 gulp.task('default', ['test']);
-gulp.task('build', ['babel']);
 
 gulp.task('watch', function() {
   gulp.watch(srcFiles, ['clearconsole', 'jshint', 'jscs', 'unit']);
