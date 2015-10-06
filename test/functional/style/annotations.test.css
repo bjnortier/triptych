@@ -1,0 +1,19 @@
+#viewport {
+  position: absolute; 
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.x {
+  color: blue;
+}
+
+.y {
+  color: green;
+}
+
+.z {
+  color: red;
+}
