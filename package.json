@@ -4,8 +4,8 @@
   "description": "A frontend MVC thing",
   "main": "build/index.js",
   "scripts": {
-    "test": "npm test",
-    "postinstall": "gulp babel && ./node_modules/.bin/webpack"
+    "test": "gulp test",
+    "postinstall": "gulp build && ./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
