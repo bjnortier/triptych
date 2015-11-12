@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var path = require('path');
 var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
+var jscsStylish = require('gulp-jscs-stylish');
 var mocha = require('gulp-mocha');
 var babel = require('gulp-babel');
 var babel_register = require('babel/register');
@@ -25,9 +26,10 @@ gulp.task('jshint', function() {
 
 gulp.task('jscs', function() {
   return gulp.src([srcFiles, unitTestFiles])
-    .pipe(jscs());
+    .pipe(jscs())
+    .pipe(jscsStylish());
 });
- 
+
 gulp.task('babel', ['jshint', 'jscs'], function () {
   return gulp.src(srcFiles)
     // .pipe(sourcemaps.init())
