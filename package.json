@@ -1,11 +1,11 @@
 {
   "name": "triptych",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "A frontend MVC thing",
   "main": "build/index.js",
   "scripts": {
     "test": "gulp test",
-    "postinstall": "gulp babel && ./node_modules/.bin/webpack"
+    "postinstall": "./node_modules/.bin/gulp babel && ./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
