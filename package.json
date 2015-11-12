@@ -5,11 +5,11 @@
   "main": "build/index.js",
   "scripts": {
     "test": "gulp test",
-    "postinstall": "./node_modules/.bin/gulp babel && ./node_modules/.bin/webpack"
+    "build": "./node_modules/.bin/gulp babel && ./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:bjnortier/vector.git"
+    "url": "git@github.com:bjnortier/triptych.git"
   },
   "author": "Ben Nortier <ben@bjnortier.com>",
   "license": "MIT",
