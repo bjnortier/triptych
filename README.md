@@ -2,4 +2,4 @@
 
 # triptych
 
-A lightweight frontend MVC thing.
+A lightweight MVC framework.
