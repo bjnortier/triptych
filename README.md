@@ -1,3 +1,5 @@
-# tryp
+[![Build Status](https://travis-ci.org/bjnortier/triptych.svg?branch=master)](https://travis-ci.org/bjnortier/triptych)
 
-A lightweight frontend MVC thing. 
+# triptych
+
+A lightweight frontend MVC thing.
