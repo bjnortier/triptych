@@ -90,12 +90,6 @@ var ThreeJSScene = (function (_Scene) {
     //   new THREE.BoxGeometry(1,1,1),
     //   new THREE.MeshLambertMaterial({color: 0x0000ff, transparent: true, opacity: 0.5})));
 
-    function animate() {
-      requestAnimationFrame(animate);
-      controls.update();
-      render();
-    }
-
     var redraw = true;
     var _this = this;
     function render() {
@@ -112,6 +106,12 @@ var ThreeJSScene = (function (_Scene) {
         redraw = false;
         _this.emit('render', camera);
       }
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      render();
     }
 
     function resize() {
