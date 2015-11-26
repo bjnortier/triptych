@@ -1,6 +1,6 @@
 {
   "name": "triptych",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "description": "A frontend MVC thing",
   "main": "build/index.js",
   "scripts": {
