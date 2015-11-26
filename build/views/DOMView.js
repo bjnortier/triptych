@@ -34,7 +34,11 @@ var DOMView = (function (_View) {
     }
     var template = '<{{tag}} ' + '{{#id}}id="{{.}}"{{/id}} ' + '{{#class}}class="{{.}}"{{/class}} ' + '{{#title}}title="{{.}}"{{/title}} ' + '{{#style}}style="{{.}}"{{/style}} ' + '{{#draggable}}draggable="{{.}}"{{/draggable}} ' + '></{{tag}}>';
     this.$el = $(mustache.render(template, options));
-    scene.$container.append(this.$el);
+    if (options.prepend) {
+      scene.$container.prepend(this.$el);
+    } else {
+      scene.$container.append(this.$el);
+    }
     this.controllerMixin = DOMViewControllerMixin;
   }
 

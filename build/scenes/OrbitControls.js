@@ -123,78 +123,13 @@ function ZUpOrbitControls(camera, domElement) {
   var startEvent = { type: 'start' };
   var endEvent = { type: 'end' };
 
-  this.rotateLeft = function (angle) {
-    if (angle === undefined) {
-      angle = getAutoRotationAngle();
-    }
-    thetaDelta -= angle;
-  };
+  function getAutoRotationAngle() {
+    return 2 * Math.PI / 60 / 60 * _this.autoRotateSpeed;
+  }
 
-  this.rotateUp = function (angle) {
-    if (angle === undefined) {
-      angle = getAutoRotationAngle();
-    }
-    phiDelta -= angle;
-  };
-
-  // pass in distance in world space to move left
-  this.panLeft = function (distance) {
-    var te = this.camera.matrix.elements;
-    // get X column of matrix
-    panOffset.set(te[0], te[1], te[2]);
-    panOffset.multiplyScalar(-distance);
-    pan.add(panOffset);
-  };
-
-  // pass in distance in world space to move up
-  this.panUp = function (distance) {
-    var te = this.camera.matrix.elements;
-    // get Y column of matrix
-    panOffset.set(te[4], te[5], te[6]);
-    panOffset.multiplyScalar(distance);
-    pan.add(panOffset);
-  };
-
-  // pass in x,y of change desired in pixel space,
-  // right and down are positive
-  this.pan = function (deltaX, deltaY) {
-    var element = _this.domElement === document ? _this.domElement.body : _this.domElement;
-
-    if (_this.camera.fov !== undefined) {
-      // perspective
-      var position = _this.camera.position;
-      var offset = position.clone().sub(_this.target);
-      var targetDistance = offset.length();
-
-      // half of the fov is center to top of screen
-      targetDistance *= Math.tan(_this.camera.fov / 2 * Math.PI / 180.0);
-
-      // we actually don't use screenWidth, since perspective camera is fixed to screen height
-      _this.panLeft(2 * deltaX * targetDistance / element.clientHeight);
-      _this.panUp(2 * deltaY * targetDistance / element.clientHeight);
-    } else if (_this.camera.top !== undefined) {
-      // orthographic
-      _this.panLeft(deltaX * (_this.camera.right - _this.camera.left) / element.clientWidth);
-      _this.panUp(deltaY * (_this.camera.top - _this.camera.bottom) / element.clientHeight);
-    } else {
-      // camera neither orthographic or perspective
-      console.warn('WARNING: OrbitControls.js encountered an unknown camera type - pan disabled.');
-    }
-  };
-
-  this.dollyIn = function (dollyScale) {
-    if (dollyScale === undefined) {
-      dollyScale = getZoomScale();
-    }
-    scale /= dollyScale;
-  };
-
-  this.dollyOut = function (dollyScale) {
-    if (dollyScale === undefined) {
-      dollyScale = getZoomScale();
-    }
-    scale *= dollyScale;
-  };
+  function getZoomScale() {
+    return Math.pow(0.95, _this.zoomSpeed);
+  }
 
   this.update = function () {
     var position = this.camera.position;
@@ -255,51 +190,6 @@ function ZUpOrbitControls(camera, domElement) {
 
     this.update();
   };
-
-  function getAutoRotationAngle() {
-    return 2 * Math.PI / 60 / 60 * _this.autoRotateSpeed;
-  }
-
-  function getZoomScale() {
-    return Math.pow(0.95, _this.zoomSpeed);
-  }
-
-  function onMouseDown(event) {
-    if (_this.enabled === false) {
-      return;
-    }
-    event.preventDefault();
-
-    if (event.button === 0) {
-      if (_this.noRotate === true) {
-        return;
-      }
-
-      state = STATE.ROTATE;
-
-      rotateStart.set(event.clientX, event.clientY);
-    } else if (event.button === 1) {
-      if (_this.noZoom === true) {
-        return;
-      }
-
-      state = STATE.DOLLY;
-
-      dollyStart.set(event.clientX, event.clientY);
-    } else if (event.button === 2) {
-      if (_this.noPan === true) {
-        return;
-      }
-
-      state = STATE.PAN;
-
-      panStart.set(event.clientX, event.clientY);
-    }
-
-    _this.domElement.addEventListener('mousemove', onMouseMove, false);
-    _this.domElement.addEventListener('mouseup', onMouseUp, false);
-    _this.dispatchEvent(startEvent);
-  }
 
   function onMouseMove(event) {
     if (_this.enabled === false) {
@@ -364,6 +254,43 @@ function ZUpOrbitControls(camera, domElement) {
     _this.domElement.removeEventListener('mouseup', onMouseUp, false);
     _this.dispatchEvent(endEvent);
     state = STATE.NONE;
+  }
+
+  function onMouseDown(event) {
+    if (_this.enabled === false) {
+      return;
+    }
+    event.preventDefault();
+
+    if (event.button === 0) {
+      if (_this.noRotate === true) {
+        return;
+      }
+
+      state = STATE.ROTATE;
+
+      rotateStart.set(event.clientX, event.clientY);
+    } else if (event.button === 1) {
+      if (_this.noZoom === true) {
+        return;
+      }
+
+      state = STATE.DOLLY;
+
+      dollyStart.set(event.clientX, event.clientY);
+    } else if (event.button === 2) {
+      if (_this.noPan === true) {
+        return;
+      }
+
+      state = STATE.PAN;
+
+      panStart.set(event.clientX, event.clientY);
+    }
+
+    _this.domElement.addEventListener('mousemove', onMouseMove, false);
+    _this.domElement.addEventListener('mouseup', onMouseUp, false);
+    _this.dispatchEvent(startEvent);
   }
 
   function onMouseWheel(event) {
@@ -579,6 +506,79 @@ function ZUpOrbitControls(camera, domElement) {
     _this.dispatchEvent(endEvent);
     state = STATE.NONE;
   }
+
+  this.rotateLeft = function (angle) {
+    if (angle === undefined) {
+      angle = getAutoRotationAngle();
+    }
+    thetaDelta -= angle;
+  };
+
+  this.rotateUp = function (angle) {
+    if (angle === undefined) {
+      angle = getAutoRotationAngle();
+    }
+    phiDelta -= angle;
+  };
+
+  // pass in distance in world space to move left
+  this.panLeft = function (distance) {
+    var te = this.camera.matrix.elements;
+    // get X column of matrix
+    panOffset.set(te[0], te[1], te[2]);
+    panOffset.multiplyScalar(-distance);
+    pan.add(panOffset);
+  };
+
+  // pass in distance in world space to move up
+  this.panUp = function (distance) {
+    var te = this.camera.matrix.elements;
+    // get Y column of matrix
+    panOffset.set(te[4], te[5], te[6]);
+    panOffset.multiplyScalar(distance);
+    pan.add(panOffset);
+  };
+
+  // pass in x,y of change desired in pixel space,
+  // right and down are positive
+  this.pan = function (deltaX, deltaY) {
+    var element = _this.domElement === document ? _this.domElement.body : _this.domElement;
+
+    if (_this.camera.fov !== undefined) {
+      // perspective
+      var position = _this.camera.position;
+      var offset = position.clone().sub(_this.target);
+      var targetDistance = offset.length();
+
+      // half of the fov is center to top of screen
+      targetDistance *= Math.tan(_this.camera.fov / 2 * Math.PI / 180.0);
+
+      // we actually don't use screenWidth, since perspective camera is fixed to screen height
+      _this.panLeft(2 * deltaX * targetDistance / element.clientHeight);
+      _this.panUp(2 * deltaY * targetDistance / element.clientHeight);
+    } else if (_this.camera.top !== undefined) {
+      // orthographic
+      _this.panLeft(deltaX * (_this.camera.right - _this.camera.left) / element.clientWidth);
+      _this.panUp(deltaY * (_this.camera.top - _this.camera.bottom) / element.clientHeight);
+    } else {
+      // camera neither orthographic or perspective
+      console.warn('WARNING: OrbitControls.js encountered an unknown camera type - pan disabled.');
+    }
+  };
+
+  this.dollyIn = function (dollyScale) {
+    if (dollyScale === undefined) {
+      dollyScale = getZoomScale();
+    }
+    scale /= dollyScale;
+  };
+
+  this.dollyOut = function (dollyScale) {
+    if (dollyScale === undefined) {
+      dollyScale = getZoomScale();
+    }
+    scale *= dollyScale;
+  };
 
   this.domElement.addEventListener('contextmenu', function (event) {
     event.preventDefault();
