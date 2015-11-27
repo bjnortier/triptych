@@ -45,7 +45,9 @@ var ThreeJSScene = (function (_Scene) {
     var height = $container.height();
 
     // camera
-    var camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
+    var near = options.near || 0.1;
+    var far = options.far || 1000;
+    var camera = new THREE.PerspectiveCamera(60, width / height, near, far);
     camera.up.set(options.cameraUp.x, options.cameraUp.y, options.cameraUp.z);
     camera.position.set(options.cameraPosition.x, options.cameraPosition.y, options.cameraPosition.z);
     this.camera = camera;
