@@ -22,14 +22,17 @@ class BindingView extends DOMView {
         new Select(this.model, 'bar'),
         new Select(this.model, 'bar'),
         new Text(this.model, 'bar'),
+        new Select(this.model, 'bob'),
+        new Select(this.model, 'bob'),
+        new Text(this.model, 'bob'),
         new Checkbox(this.model, 'baz'),
         new Checkbox(this.model, 'baz'),
         new Text(this.model, 'baz'),
       ]
     };
 
-    var template = 
-      '{{#bindings}}' + 
+    var template =
+      '{{#bindings}}' +
         '<div>{{{.}}}</div>' +
       '{{/bindings}}';
 
