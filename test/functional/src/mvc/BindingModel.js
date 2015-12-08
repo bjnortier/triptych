@@ -11,12 +11,12 @@ class BindingModel extends Model {
       foo: 'some string',
       bar: 'b',
       baz: true,
+      bob: 1,
     };
 
     var fieldSpecs = {
-      bar: {
-        options: ['a', 'b', 'c'],
-      }
+      bar: ['a', 'b', 'c'],
+      bob: [{label: 'one', value: 1}, {label: 'two', value: 2}],
     };
 
     keys(fields).forEach(key => {

@@ -7,6 +7,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var $ = require('jquery');
+var isString = require('lodash.isstring');
 
 var DOMBinding = require('./DOMBinding');
 
@@ -19,12 +20,33 @@ var Select = (function (_DOMBinding) {
     _get(Object.getPrototypeOf(Select.prototype), 'constructor', this).call(this, model, field);
 
     var value = model[field];
-    var $el = $('<select class="' + field + '">' + model[field + 'Spec'].options.map(function (option) {
-      return '<option value="' + option + '"' + (value === option ? ' selected="selected"' : ' ') + '>' + option + '</option>';
+    var spec = model[field + 'Spec'];
+    var $el = $('<select class="' + field + '">' + spec.map(function (option) {
+      var optionLabel = undefined;
+      var optionValue = undefined;
+      if (isString(option)) {
+        optionLabel = option;
+        optionValue = option;
+      } else {
+        optionLabel = option.label;
+        optionValue = option.value;
+      }
+      return '<option value="' + optionValue + '"' + (value === optionValue ? ' selected="selected"' : ' ') + '>' + optionLabel + '</option>';
     }).join('') + '</select>');
     $el.change(function () {
       var v = $el.val();
-      model[field] = v;
+      // Actually find the non-string value in the spec
+      spec.forEach(function (option) {
+        if (isString(option)) {
+          if (option === v) {
+            model[field] = v;
+          }
+        } else {
+          if (String(option.value) === v) {
+            model[field] = option.value;
+          }
+        }
+      });
     });
     model.on('change', function (changeField, changeValue) {
       if (field === changeField) {
