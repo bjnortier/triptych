@@ -20,7 +20,8 @@ var Select = (function (_DOMBinding) {
     _get(Object.getPrototypeOf(Select.prototype), 'constructor', this).call(this, model, field);
 
     var value = model[field];
-    var $el = $('<select class="' + field + '">' + model[field + 'Spec'].map(function (option) {
+    var spec = model[field + 'Spec'];
+    var $el = $('<select class="' + field + '">' + spec.map(function (option) {
       var optionLabel = undefined;
       var optionValue = undefined;
       if (isString(option)) {
@@ -34,7 +35,18 @@ var Select = (function (_DOMBinding) {
     }).join('') + '</select>');
     $el.change(function () {
       var v = $el.val();
-      model[field] = v;
+      // Actually find the non-string value in the spec
+      spec.forEach(function (option) {
+        if (isString(option)) {
+          if (option === v) {
+            model[field] = v;
+          }
+        } else {
+          if (String(option.value) === v) {
+            model[field] = option.value;
+          }
+        }
+      });
     });
     model.on('change', function (changeField, changeValue) {
       if (field === changeField) {
