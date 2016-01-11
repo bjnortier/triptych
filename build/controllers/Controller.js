@@ -46,6 +46,7 @@ var Controller = (function () {
       views.forEach(function (view) {
         _this2.removeView(view);
       });
+      this.views = [];
     }
   }]);
 
