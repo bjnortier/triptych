@@ -40,6 +40,7 @@ var DOMView = (function (_View) {
       scene.$container.append(this.$el);
     }
     this.controllerMixin = DOMViewControllerMixin;
+    this.options = options;
   }
 
   _createClass(DOMView, [{
@@ -109,7 +110,13 @@ var DOMView = (function (_View) {
   }, {
     key: 'show',
     value: function show() {
-      this.scene.$container.append(this.$el);
+      this.emit('pre_render');
+      if (this.options.prepend) {
+        this.scene.$container.prepend(this.$el);
+      } else {
+        this.scene.$container.append(this.$el);
+      }
+      this.emit('post_render');
       this.hidden = false;
     }
   }]);
