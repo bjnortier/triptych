@@ -1,6 +1,6 @@
 var keys = require('lodash.keys');
-var flow = require('../../../..');
-var Model = flow.Model;
+var trip = require('../../../..');
+var Model = trip.Model;
 
 class BindingModel extends Model {
 

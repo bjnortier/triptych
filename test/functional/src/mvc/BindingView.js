@@ -1,9 +1,9 @@
-var flow = require('../../../..');
-var DOMView = flow.views.DOMView;
-var TextInput = flow.bindings.dom.TextInput;
-var Text = flow.bindings.dom.Text;
-var Select = flow.bindings.dom.Select;
-var Checkbox = flow.bindings.dom.Checkbox;
+var trip = require('../../../..');
+var DOMView = trip.views.DOMView;
+var TextInput = trip.bindings.dom.TextInput;
+var Text = trip.bindings.dom.Text;
+var Select = trip.bindings.dom.Select;
+var Checkbox = trip.bindings.dom.Checkbox;
 
 class BindingView extends DOMView {
 

@@ -1,5 +1,5 @@
-var flow = require('../../../..');
-var Model = flow.Model;
+var trip = require('../../../..');
+var Model = trip.Model;
 
 class EventCaptureModel extends Model {
 

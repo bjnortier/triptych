@@ -1,8 +1,8 @@
-var flow = require('../../../..');
-var $ = flow.$;
-var ThreeJSScene = flow.scenes.ThreeJSScene;
-var Controller = flow.Controller;
-var Model = flow.Model;
+var trip = require('../../../..');
+var $ = trip.$;
+var ThreeJSScene = trip.scenes.ThreeJSScene;
+var Controller = trip.Controller;
+var Model = trip.Model;
 
 var RectangleView = require('./RectangleView');
 

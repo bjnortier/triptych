@@ -1,6 +1,6 @@
-var flow = require('../../../..');
-var THREE = flow.THREE;
-var ThreeJSView = flow.views.ThreeJSView;
+var trip = require('../../../..');
+var THREE = trip.THREE;
+var ThreeJSView = trip.views.ThreeJSView;
 
 class Rectangle extends ThreeJSView {
 

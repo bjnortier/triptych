@@ -1,6 +1,6 @@
-var flow = require('../../../..');
-var mustache = flow.mustache;
-var DOMView = flow.views.DOMView;
+var trip = require('../../../..');
+var mustache = trip.mustache;
+var DOMView = trip.views.DOMView;
 
 class EventCaptureView extends DOMView {
 

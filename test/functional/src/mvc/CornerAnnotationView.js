@@ -1,5 +1,5 @@
-const flow = require('../../../..');
-const ThreeJSAnnotationView = flow.views.ThreeJSAnnotationView;
+const trip = require('../../../..');
+const ThreeJSAnnotationView = trip.views.ThreeJSAnnotationView;
 
 class CornerAnnotationView extends ThreeJSAnnotationView {
 
