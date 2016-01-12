@@ -1,9 +1,9 @@
-var flow = require('../../../..');
-var $ = flow.$;
-var ThreeJSScene = flow.scenes.ThreeJSScene;
-var Controller = flow.Controller;
-var Model = flow.Model;
-var AxesView = flow.views.AxesView;
+var trip = require('../../../..');
+var $ = trip.$;
+var ThreeJSScene = trip.scenes.ThreeJSScene;
+var Controller = trip.Controller;
+var Model = trip.Model;
+var AxesView = trip.views.AxesView;
 
 var CubeView = require('./CubeView');
 var CornerAnnotationView = require('./CornerAnnotationView');

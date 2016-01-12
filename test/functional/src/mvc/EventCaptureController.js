@@ -1,12 +1,12 @@
-var flow = require('../../../..');
-var $ = flow.$;
-var DOMScene = flow.scenes.DOMScene;
-var ThreeJSScene = flow.scenes.ThreeJSScene;
-var Controller = flow.Controller;
+var trip = require('../../../..');
+var $ = trip.$;
+var DOMScene = trip.scenes.DOMScene;
+var ThreeJSScene = trip.scenes.ThreeJSScene;
+var Controller = trip.Controller;
 
 var EventCaptureModel = require('./EventCaptureModel');
 var EventCaptureView = require('./EventCaptureView');
-var AxesView = flow.views.AxesView;
+var AxesView = trip.views.AxesView;
 var CubeView = require('./CubeView');
 
 class EventCaptureController extends Controller {
@@ -28,7 +28,7 @@ class EventCaptureController extends Controller {
     });
     this.addView(threeJSScene, CubeView, {
       label: 'c2',
-      color: 0xff6666, 
+      color: 0xff6666,
       position: {x: 0.6, y: 0, z: 0},
       size: 0.2
     });

@@ -32,7 +32,12 @@ var ThreeJSAnnotationView = (function (_DOMView) {
     _classCallCheck(this, ThreeJSAnnotationView);
 
     options = options || {};
-    options.style = '\n      position: absolute;\n      pointer-events: none;\n    ';
+    if (options['class']) {
+      options['class'] += ' annotation';
+    } else {
+      options['class'] = 'annotation';
+    }
+    options.style = 'position: absolute;';
     _get(Object.getPrototypeOf(ThreeJSAnnotationView.prototype), 'constructor', this).call(this, model, threeJSScene, options);
     this.position = new THREE.Vector3(position.x, position.y, position.z);
     this.$container = threeJSScene.$container;

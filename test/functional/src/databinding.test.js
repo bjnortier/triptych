@@ -1,6 +1,6 @@
-var flow = require('../../..');
-var $ = flow.$;
-var DOMScene = flow.scenes.DOMScene;
+var trip = require('../../..');
+var $ = trip.$;
+var DOMScene = trip.scenes.DOMScene;
 
 var domScene = new DOMScene($('#dom'));
 var model = new (require('./mvc/BindingModel'))();
