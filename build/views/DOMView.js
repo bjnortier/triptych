@@ -44,12 +44,6 @@ var DOMView = (function (_View) {
   }
 
   _createClass(DOMView, [{
-    key: 'remove',
-    value: function remove() {
-      _get(Object.getPrototypeOf(DOMView.prototype), 'remove', this).call(this);
-      this.$el.remove();
-    }
-  }, {
     key: 'render',
     value: function render() {
       this.$el.empty();
@@ -100,6 +94,13 @@ var DOMView = (function (_View) {
       keys(placeHolders).forEach(function (id) {
         _this.$el.find('.placeholder#' + id).replaceWith(placeHolders[id].$el);
       }, this);
+    }
+  }, {
+    key: 'remove',
+    value: function remove() {
+      _get(Object.getPrototypeOf(DOMView.prototype), 'remove', this).call(this);
+      this.$el.remove();
+      this.$el = undefined;
     }
   }, {
     key: 'hide',
