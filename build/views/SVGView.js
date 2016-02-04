@@ -8,16 +8,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var View = require('./View');
+var DOMView = require('./DOMView');
+var DOMViewControllerMixin = require('./mixins/DOMViewControllerMixin');
 
-var SVGView = (function (_View) {
-  _inherits(SVGView, _View);
+var SVG = undefined;
 
-  function SVGView(scene, model) {
+var SVGView = (function (_DOMView) {
+  _inherits(SVGView, _DOMView);
+
+  function SVGView(model, scene, options) {
     _classCallCheck(this, SVGView);
 
-    _get(Object.getPrototypeOf(SVGView.prototype), 'constructor', this).call(this, model);
-    this.group = scene.draw.group();
+    _get(Object.getPrototypeOf(SVGView.prototype), 'constructor', this).call(this, model, scene, options);
+
+    // Sadly SVG.js doesn't play nice with require()
+    if (SVG === undefined) {
+      SVG = require('svg.js');
+    }
+    var draw = SVG(this.$el[0]);
+    this.group = draw.group();
+    this.controllerMixin = DOMViewControllerMixin;
   }
 
   _createClass(SVGView, [{
@@ -25,9 +35,14 @@ var SVGView = (function (_View) {
     value: function render() {
       this.group.clear();
     }
+  }, {
+    key: 'update',
+    value: function update() {
+      this.render();
+    }
   }]);
 
   return SVGView;
-})(View);
+})(DOMView);
 
 module.exports = SVGView;

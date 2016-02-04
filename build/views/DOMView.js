@@ -18,6 +18,7 @@ var mustache = require('mustache');
 var View = require('./View');
 var DOMViewControllerMixin = require('./mixins/DOMViewControllerMixin');
 var DOMBinding = require('../bindings/dom/DOMBinding');
+var _mergeOptions = require('./mergeOptions');
 
 var DOMView = (function (_View) {
   _inherits(DOMView, _View);
@@ -44,12 +45,6 @@ var DOMView = (function (_View) {
   }
 
   _createClass(DOMView, [{
-    key: 'remove',
-    value: function remove() {
-      _get(Object.getPrototypeOf(DOMView.prototype), 'remove', this).call(this);
-      this.$el.remove();
-    }
-  }, {
     key: 'render',
     value: function render() {
       this.$el.empty();
@@ -102,6 +97,13 @@ var DOMView = (function (_View) {
       }, this);
     }
   }, {
+    key: 'remove',
+    value: function remove() {
+      _get(Object.getPrototypeOf(DOMView.prototype), 'remove', this).call(this);
+      this.$el.remove();
+      this.$el = undefined;
+    }
+  }, {
     key: 'hide',
     value: function hide() {
       this.$el.remove();
@@ -118,6 +120,13 @@ var DOMView = (function (_View) {
       }
       this.emit('post_render');
       this.hidden = false;
+    }
+  }], [{
+    key: 'mergeOptions',
+    value: function mergeOptions(a, b) {
+      return _mergeOptions(a, b, {
+        concatenations: ['class', 'style']
+      });
     }
   }]);
 

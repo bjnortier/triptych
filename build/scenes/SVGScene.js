@@ -8,8 +8,6 @@ function _inherits(subClass, superClass) { if (typeof superClass !== 'function' 
 
 var Scene = require('./Scene');
 
-var SVG;
-
 var SVGScene = (function (_Scene) {
   _inherits(SVGScene, _Scene);
 
@@ -17,12 +15,6 @@ var SVGScene = (function (_Scene) {
     _classCallCheck(this, SVGScene);
 
     _get(Object.getPrototypeOf(SVGScene.prototype), 'constructor', this).call(this, $container);
-
-    // Sadly SVG.js doesn't play nice with require()
-    if (SVG === undefined) {
-      SVG = require('svg.js');
-    }
-    this.draw = SVG($container[0]);
   }
 
   return SVGScene;

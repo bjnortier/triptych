@@ -43,13 +43,21 @@ var ThreeJSAnnotationView = (function (_DOMView) {
     this.$container = threeJSScene.$container;
     this.align = options.align || {};
 
-    threeJSScene.on('render', function (camera) {
+    this.onRender = function (camera) {
       _this.updatePosition(camera);
-    });
+    };
+
+    threeJSScene.on('render', this.onRender);
     setTimeout(this.updatePosition.bind(this, threeJSScene.camera));
   }
 
   _createClass(ThreeJSAnnotationView, [{
+    key: 'remove',
+    value: function remove() {
+      _get(Object.getPrototypeOf(ThreeJSAnnotationView.prototype), 'remove', this).call(this);
+      this.scene.off('render', this.onRender);
+    }
+  }, {
     key: 'render',
     value: function render() {
       _get(Object.getPrototypeOf(ThreeJSAnnotationView.prototype), 'render', this).call(this);
